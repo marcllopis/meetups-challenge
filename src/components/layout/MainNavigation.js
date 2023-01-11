@@ -3,12 +3,16 @@ import {
   FAVORITES_PAGE,
   NEW_MEETUP_PAGE,
 } from "./../../utils/constants";
-
 import classes from "./MainNavigation.module.css";
 
-export default function MainNavigation({ setPage }) {
+export default function MainNavigation({ setPage, visible }) {
   return (
-    <header className={classes.header} data-test="navigation-header">
+    <header
+      className={`${classes.header} ${
+        visible ? classes["header-visible"] : classes["header-hidden"]
+      }`}
+      data-test="navigation-header"
+    >
       <div className={classes.logo}>React Meetups</div>
       <nav>
         <ul>
