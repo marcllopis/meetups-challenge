@@ -1,8 +1,4 @@
-import {
-  ALL_MEETUP_PAGE,
-  FAVORITES_PAGE,
-  NEW_MEETUP_PAGE,
-} from "./../../utils/constants";
+import { Link } from "react-router-dom";
 import classes from "./MainNavigation.module.css";
 
 export default function MainNavigation({ setPage, visible }) {
@@ -17,21 +13,41 @@ export default function MainNavigation({ setPage, visible }) {
       <nav>
         <ul>
           <li>
-            <a href="#" onClick={() => setPage(ALL_MEETUP_PAGE)}>
+            <Link
+              style={{
+                textDecoration: "none",
+                fontSize: "1.5rem",
+                color: "#fcb8d2",
+              }}
+              to="/"
+            >
               All Meetups
-            </a>
+            </Link>
           </li>
-
           <li>
-            <a href="#" onClick={() => setPage(NEW_MEETUP_PAGE)}>
+            <Link
+              style={{
+                textDecoration: "none",
+                fontSize: "1.5rem",
+                color: "#fcb8d2",
+              }}
+              to="/new-meetup"
+            >
               Add New Meetup
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" onClick={() => setPage(FAVORITES_PAGE)}>
+            <Link
+              style={{
+                textDecoration: "none",
+                fontSize: "1.5rem",
+                color: "#fcb8d2",
+              }}
+              to="/favorites"
+            >
               My Favorites
               <span className={classes.badge}>{0}</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
