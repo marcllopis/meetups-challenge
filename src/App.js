@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import AllMeetupsPage from "./pages/AllMeetupsPage";
 import FavoritesPage from "./pages/Favorites";
@@ -36,6 +38,7 @@ function App() {
           <Route path="*" element={<AllMeetupsPage />} />
         </Routes>
       </Layout>
+      <ToastContainer />
     </div>
   );
 }

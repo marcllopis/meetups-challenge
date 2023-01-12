@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { MyContext } from "../../context/MyProvider";
+
 import classes from "./MainNavigation.module.css";
 
-export default function MainNavigation({ setPage, visible }) {
+export default function MainNavigation({ visible }) {
+  const context = useContext(MyContext);
+
   return (
     <header
       className={`${classes.header} ${
@@ -46,7 +51,7 @@ export default function MainNavigation({ setPage, visible }) {
               to="/favorites"
             >
               My Favorites
-              <span className={classes.badge}>{0}</span>
+              <span className={classes.badge}>{context.favoritesNumber}</span>
             </Link>
           </li>
         </ul>
