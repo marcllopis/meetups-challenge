@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { useFetch } from "../util-hooks/useFetch";
 import MeetupList from "../components/meetups/MeetupList";
+import { MyContext } from "../context/MyProvider";
 
 export default function AllMeetupsPage() {
+  const context = useContext(MyContext);
   const { data } = useFetch({
     url: "/data.json",
   });
@@ -11,7 +14,7 @@ export default function AllMeetupsPage() {
   return (
     <section>
       <h1>All Meetups</h1>
-      <MeetupList meetups={data} />
+      <MeetupList meetups={[...data, ...context.createdMeetups]} />
     </section>
   );
 }

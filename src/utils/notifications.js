@@ -30,3 +30,13 @@ export const duplicatedFavoriteEvent = (eventTitle) =>
     pauseOnHover: true,
     draggable: true,
   });
+
+export const addedNewEvent = () =>
+  toast.info(`You have created a new meetup`, {
+    position: "bottom-right",
+    autoClose: 3000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+  });

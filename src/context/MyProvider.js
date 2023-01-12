@@ -13,6 +13,10 @@ const MyProvider = (props) => {
     [],
     "favoriteMeetups"
   );
+  const [createdMeetups, setCreatedMeetups] = useStateWithLocalStorage(
+    [],
+    "createdMeetups"
+  );
 
   return (
     <MyContext.Provider
@@ -21,6 +25,8 @@ const MyProvider = (props) => {
         setFavoritesNumber,
         favorites,
         setFavorites,
+        createdMeetups,
+        setCreatedMeetups,
       }}
     >
       {props.children}
