@@ -1,30 +1,55 @@
-/* eslint-disable testing-library/await-async-query */
-/* eslint-disable testing-library/no-debugging-utils */
-import { shallow, mount } from "enzyme";
+import { render, fireEvent, cleanup, screen } from "@testing-library/react";
+import MyProvider from "./context/MyProvider";
+import { createMemoryHistory } from "history";
 import App from "./App";
-import MainNavigation from "./components/layout/MainNavigation";
-import Layout from "./components/layout/Layout";
 
-/**
- * Factory funcion to create a ShallowWrapper for the App component
- * @function setup
- * @returns {ShallowWrapper}
- */
-const setup = () => shallow(<App />);
-const findByTestAttr = (wrapper, val) => wrapper.find(`[data-test]='${val}'`);
+import { BrowserRouter as Router } from "react-router-dom";
 
-test("renders App without crashing", () => {
-  const wrapper = setup();
-  //console.log(wrapper.debug());
-  expect(wrapper.exists()).toBe(true);
-});
+describe("App", () => {
+  const history = createMemoryHistory();
+  history.push = jest.fn();
 
-test("renders the navigation component", () => {
-  const wrapper = setup();
-  expect(wrapper.find(MainNavigation).length).toBe(1);
-});
+  afterEach(() => {
+    cleanup();
+  });
 
-test("renders the Layout component", () => {
-  const wrapper = setup();
-  expect(wrapper.find(Layout).length).toBe(1);
+  it("App component renders correctly", async () => {
+    render(
+      <Router>
+        <MyProvider favoritesNumber={0}>
+          <App />
+        </MyProvider>
+      </Router>
+    );
+    const app = screen.getByTestId("app");
+    expect(app).toBeInTheDocument();
+  });
+
+  it("router handles landing on a wrong path", () => {
+    // pushes history router prop to navigate to selected path
+    history.push("/some/wrong/route");
+    render(
+      <Router history={history}>
+        <MyProvider favoritesNumber={0}>
+          <App />
+        </MyProvider>
+      </Router>
+    );
+    // router redirects to all meetups page
+    expect(screen.getByTestId("all-meetups-page")).toBeInTheDocument();
+  });
+  it("router allows navigation to another page section", async () => {
+    render(
+      <Router history={history}>
+        <MyProvider favoritesNumber={0}>
+          <App />
+        </MyProvider>
+      </Router>
+    );
+    // selects text in the navbar that links to /favorites and clicks
+    const myFavoritesLink = screen.getByText("My Favorites");
+    fireEvent.click(myFavoritesLink);
+    // router navigates to favorites page
+    await screen.findByTestId("favorites-page");
+  });
 });

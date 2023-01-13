@@ -28,7 +28,7 @@ function App() {
   }, [lastScroll]);
 
   return (
-    <div data-test="app">
+    <div data-testid="app">
       <MainNavigation visible={visible} />
       <Layout>
         <Routes>

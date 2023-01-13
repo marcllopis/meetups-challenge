@@ -12,7 +12,7 @@ export default function MainNavigation({ visible }) {
       className={`${classes.header} ${
         visible ? classes["header-visible"] : classes["header-hidden"]
       }`}
-      data-test="navigation-header"
+      data-testid="navigation-header"
     >
       <div className={classes.logo}>React Meetups</div>
       <nav>

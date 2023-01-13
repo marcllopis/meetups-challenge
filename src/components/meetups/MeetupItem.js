@@ -51,7 +51,7 @@ export default function MeetupItem({ item }) {
   };
 
   return (
-    <li className={classes.item} data-test="meet-up-item">
+    <li className={classes.item} data-testid="meet-up-item">
       <Card>
         <div className={classes.image}>
           <img src={item.image} alt={item.title} />
