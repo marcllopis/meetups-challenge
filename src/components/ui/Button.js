@@ -14,6 +14,10 @@ const StyledButton = styled.button`
   }
 `;
 
-export default function Button({ text, action }) {
-  return <StyledButton onClick={action}>{text}</StyledButton>;
+export default function Button({ text, action, id }) {
+  return (
+    <StyledButton data-testid={id} onClick={action}>
+      {text}
+    </StyledButton>
+  );
 }

@@ -55,7 +55,7 @@ export default function NewMeetupForm() {
             required
             value={state.title}
             onChange={handleChange}
-            id="title"
+            data-testid="title"
           />
         </div>
         <div className={classes.control}>
@@ -66,7 +66,7 @@ export default function NewMeetupForm() {
             required
             value={state.image}
             onChange={handleChange}
-            id="image"
+            data-testid="image"
           />
         </div>
         <div className={classes.control}>
@@ -77,14 +77,14 @@ export default function NewMeetupForm() {
             required
             value={state.address}
             onChange={handleChange}
-            id="address"
+            data-testid="address"
           />
         </div>
         <div className={classes.control}>
           <label htmlFor="description">Description</label>
           <textarea
             name="description"
-            id="description"
+            data-testid="description"
             required
             value={state.description}
             onChange={handleChange}

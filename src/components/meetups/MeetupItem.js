@@ -12,7 +12,7 @@ import {
   removedFavoriteEvent,
 } from "../../utils/notifications";
 
-export default function MeetupItem({ item }) {
+export default function MeetupItem({ item, index }) {
   const context = useContext(MyContext);
   const location = useLocation();
 
@@ -63,6 +63,7 @@ export default function MeetupItem({ item }) {
         </article>
         <div className={classes.actions}>
           <Button
+            id={`add-fav-btn-${index}`}
             action={
               location.pathname === "/"
                 ? () => addFavorite(item)
