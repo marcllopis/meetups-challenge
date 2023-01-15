@@ -48,7 +48,7 @@ export default function NewMeetupForm() {
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
-          <label htmlFor="title">Meetup Title</label>
+          <label htmlFor="title">Meetup title</label>
           <input
             name="title"
             type="text"
@@ -56,10 +56,11 @@ export default function NewMeetupForm() {
             value={state.title}
             onChange={handleChange}
             data-testid="title"
+            id="title"
           />
         </div>
         <div className={classes.control}>
-          <label htmlFor="image">Meetup Image</label>
+          <label htmlFor="image">Meetup image</label>
           <input
             name="image"
             type="url"
@@ -67,10 +68,11 @@ export default function NewMeetupForm() {
             value={state.image}
             onChange={handleChange}
             data-testid="image"
+            id="image"
           />
         </div>
         <div className={classes.control}>
-          <label htmlFor="address">Address</label>
+          <label htmlFor="address">Meetup address</label>
           <input
             name="address"
             type="text"
@@ -78,10 +80,11 @@ export default function NewMeetupForm() {
             value={state.address}
             onChange={handleChange}
             data-testid="address"
+            id="address"
           />
         </div>
         <div className={classes.control}>
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description">Meetup description</label>
           <textarea
             name="description"
             data-testid="description"
@@ -89,6 +92,7 @@ export default function NewMeetupForm() {
             value={state.description}
             onChange={handleChange}
             rows="5"
+            id="description"
           ></textarea>
         </div>
         <div className={classes.actions}>
